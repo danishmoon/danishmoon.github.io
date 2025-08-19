@@ -364,16 +364,18 @@
     <div class="container">
         <h1 class="animate__animated animate__fadeInDown">Happy Birthday <span class="crown">👑</span></h1>
         
-        <div class="message-box animate__animated animate__zoomIn">
+        <!-- <div class="message-box animate__animated animate__zoomIn">
             <p>My Dearest Love,</p>
             <p>On this magical day that brought you into this world, I want you to know how incredibly special you are to me.</p>
             <p>Your beauty takes my breath away, your kindness warms my soul, and your love gives my life meaning.</p>
             <p>May your birthday sparkle with joy, laughter, and all the happiness you bring to others every day.</p>
             <p>I cherish every moment with you and look forward to creating countless more beautiful memories together.</p>
             <div class="signature animate__animated animate__fadeIn animate__delay-1s">Forever Yours</div>
-        </div>
+        </div> -->
         
-        <button class="btn animate__animated animate__pulse animate__infinite" id="surprise-btn">💖 Click For Magic 💖</button>
+        <img src="cake.png" style="display: block; margin-top: 10%; width: 100%; height: auto; animation: bounce 4s infinite;">
+        
+        <img src="couple-dance.png" id="surprise-btn" style="margin-top: 20%;"/>
         
         <div class="hidden-message" id="hidden-message">
             <p>Every day with you feels like a beautiful dream I never want to wake up from.</p>
@@ -414,7 +416,7 @@
     </div>
     
     <audio id="bg-music" loop>
-        <source src="https://github.com/danishmoon/danishmoon.github.io/raw/refs/heads/main/kinna-sona.mp3" type="audio/mpeg">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
         <!-- Replace with your actual song -->
     </audio>
     
@@ -422,7 +424,7 @@
         // Create floating elements
         function createFloatingElements() {
             const container = document.getElementById('floating-elements');
-            const elements = ['💗', '🎀', '🌍', '🫶🏻', '🥰', '🌚', '🫣', '🥹', '😭', '🫂', '💕', '🌷', '🙈'];
+            const elements = ['💘', '💗', '💕', '🫶🏻', '💖'];
             const count = 30;
             
             for (let i = 0; i < count; i++) {
