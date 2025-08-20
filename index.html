@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday My Queen 👑</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Happy Birthday My Queen 👑</title>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+        <style>
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600;700&family=Sacramento&display=swap');
         
         :root {
@@ -357,70 +358,53 @@
             }
         }
     </style>
-</head>
-<body>
-    <div class="floating-elements" id="floating-elements"></div>
-    
-    <div class="container">
-        <h1 class="animate__animated animate__fadeInDown">Happy Birthday <span class="crown">👑</span></h1>
-        
-        <!-- <div class="message-box animate__animated animate__zoomIn">
-            <p>My Dearest Love,</p>
-            <p>On this magical day that brought you into this world, I want you to know how incredibly special you are to me.</p>
-            <p>Your beauty takes my breath away, your kindness warms my soul, and your love gives my life meaning.</p>
-            <p>May your birthday sparkle with joy, laughter, and all the happiness you bring to others every day.</p>
-            <p>I cherish every moment with you and look forward to creating countless more beautiful memories together.</p>
-            <div class="signature animate__animated animate__fadeIn animate__delay-1s">Forever Yours</div>
-        </div> -->
-        
-        <img src="cake.png" style="display: block; margin-top: 10%; width: 100%; height: auto; animation: bounce 4s infinite;">
-        
-        <img src="couple-dance.png" id="surprise-btn" style="margin-top: 20%;"/>
-        
-        <div class="hidden-message" id="hidden-message">
-            <p>Every day with you feels like a beautiful dream I never want to wake up from.</p>
-            <p>You're the missing piece that makes my life complete, the melody that makes my heart sing.</p>
-            <p>Thank you for being my partner, my best friend, and my greatest love.</p>
-            <p>I promise to cherish you, adore you, and love you more with each passing day.</p>
-            <p>Happy Birthday to the most amazing woman in my world!</p>
-        </div>
-        
-        <button class="btn" id="memories-btn" style="display: none;">🎁 Our Special Memories 🎁</button>
-        
-        <div class="memory-timeline" id="memory-timeline">
-            <div class="memory">
-                <div class="memory-date">The Day We Met</div>
-                <p>I'll never forget how my heart skipped a beat when I first saw you. That moment changed my life forever.</p>
+    </head>
+    <body>
+        <div class="floating-elements" id="floating-elements"></div>
+
+        <div class="container">
+            <h1 class="animate__animated animate__fadeInDown">Happy Birthday
+                <span class="crown">👑</span></h1>
+
+            <img src="cake.png"
+                style="display: block; margin-top: 10%; width: 100%; height: auto; animation: bounce 4s infinite;">
+
+            <img src="couple-dance.png" id="surprise-btn"
+                style="margin-top: 20%;" />
+
+            <div class="hidden-message" id="hidden-message">
+                <p>Every day with you feels like a beautiful dream I never want
+                    to wake up from.</p>
+                <p>You're the missing piece that makes my life complete, the
+                    melody that makes my heart sing.</p>
+                <p>Thank you for being my partner, my best friend, and my
+                    greatest love.</p>
+                <p>I promise to cherish you, adore you, and love you more with
+                    each passing day.</p>
+                <p>Happy Birthday to the most amazing woman in my world!</p>
             </div>
-            <div class="memory">
-                <div class="memory-date">Our First Date</div>
-                <p>That nervous excitement, the way you laughed at my jokes (even the bad ones), and knowing this was something special.</p>
-            </div>
-            <div class="memory">
-                <div class="memory-date">When I Realized I Loved You</div>
-                <p>It wasn't one moment but a thousand little ones that made me realize you had my heart completely.</p>
+
+            <div class="music-player" id="music-player">
+                <h3>Our Song 💞</h3>
+                <div class="music-controls">
+                    <button class="music-btn" id="play-btn">▶️</button>
+                    <button class="music-btn" id="pause-btn">⏸️</button>
+                    <button class="music-btn" id="stop-btn">⏹️</button>
+                </div>
+                <div class="progress-container" id="progress-container">
+                    <div class="progress" id="progress"></div>
+                </div>
             </div>
         </div>
-        
-        <div class="music-player" id="music-player">
-            <h3>Our Song 💞</h3>
-            <div class="music-controls">
-                <button class="music-btn" id="play-btn">▶️</button>
-                <button class="music-btn" id="pause-btn">⏸️</button>
-                <button class="music-btn" id="stop-btn">⏹️</button>
-            </div>
-            <div class="progress-container" id="progress-container">
-                <div class="progress" id="progress"></div>
-            </div>
-        </div>
-    </div>
-    
-    <audio id="bg-music" loop>
-        <source src="https://github.com/danishmoon/danishmoon.github.io/raw/refs/heads/main/kinna-sona.mp3" type="audio/mpeg">
-        <!-- Replace with your actual song -->
-    </audio>
-    
-    <script>
+
+        <audio id="bg-music" loop>
+            <source
+                src="https://github.com/danishmoon/danishmoon.github.io/raw/refs/heads/main/kinna-sona.mp3"
+                type="audio/mpeg">
+            <!-- Replace with your actual song -->
+        </audio>
+
+        <script>
         // Create floating elements
         function createFloatingElements() {
             const container = document.getElementById('floating-elements');
@@ -454,19 +438,14 @@
         // Surprise button functionality
         document.getElementById('surprise-btn').addEventListener('click', function() {
             const hiddenMessage = document.getElementById('hidden-message');
-            const memoriesBtn = document.getElementById('memories-btn');
             const musicPlayer = document.getElementById('music-player');
             
             if (hiddenMessage.style.display === 'block') {
                 hiddenMessage.style.display = 'none';
-                memoriesBtn.style.display = 'none';
                 musicPlayer.style.display = 'none';
-                this.textContent = '💖 Click For Magic 💖';
             } else {
                 hiddenMessage.style.display = 'block';
-                memoriesBtn.style.display = 'inline-block';
                 musicPlayer.style.display = 'block';
-                this.textContent = '✨ More Magic ✨';
                 
                 // Create floating hearts animation
                 createHeartBurst();
@@ -479,26 +458,6 @@
             }
         });
         
-        // Memories button functionality
-        document.getElementById('memories-btn').addEventListener('click', function() {
-            const timeline = document.getElementById('memory-timeline');
-            
-            if (timeline.style.display === 'block') {
-                timeline.style.display = 'none';
-                this.textContent = '🎁 Our Special Memories 🎁';
-            } else {
-                timeline.style.display = 'block';
-                this.textContent = 'Hide Memories';
-                
-                // Animate memories in
-                const memories = document.querySelectorAll('.memory');
-                memories.forEach((memory, index) => {
-                    setTimeout(() => {
-                        memory.classList.add('show');
-                    }, index * 300);
-                });
-            }
-        });
         
         // Create heart burst animation
         function createHeartBurst() {
@@ -603,5 +562,5 @@
             }, 2000);
         });
     </script>
-</body>
+    </body>
 </html>
