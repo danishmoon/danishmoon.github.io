@@ -53,13 +53,6 @@
             filter: drop-shadow(0 0 5px rgba(255, 107, 158, 0.5));
         }
         
-        .crown {
-            font-size: 3rem;
-            color: var(--gold);
-            animation: bounce 2s infinite;
-            display: inline-block;
-        }
-        
         .message-box {
             background: white;
             border-radius: 20px;
@@ -234,58 +227,6 @@
             animation: float linear infinite;
         }
         
-        .music-player {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin: 40px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            display: none;
-        }
-        
-        .music-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .music-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(to right, #ff6b9e, #b399d4);
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-            font-size: 1.2rem;
-        }
-        
-        .music-btn:hover {
-            transform: scale(1.1);
-        }
-        
-        .progress-container {
-            width: 100%;
-            height: 6px;
-            background: #f0f0f0;
-            border-radius: 3px;
-            margin-top: 20px;
-            cursor: pointer;
-        }
-        
-        .progress {
-            height: 100%;
-            background: linear-gradient(to right, #ff6b9e, #b399d4);
-            border-radius: 3px;
-            width: 0%;
-        }
-        
         @keyframes float {
             0% {
                 transform: translateY(0) rotate(0deg);
@@ -398,7 +339,8 @@
                 for surprices.
                 💗✨</p>
 
-            <img src="couple-dance.png" id="surprise-btn"
+            <img class="tap-to-play-on-couple" src="couple-dance.png"
+                id="surprise-btn"
                 style="margin-top: 2%;" />
 
             <div class="hidden-message" id="hidden-message">
@@ -432,26 +374,28 @@
                 <p>I love you Aditi 💗✨🌍</p>
             </div>
 
-            <div class="music-player" id="music-player">
-                <h3>Our Song 💞</h3>
-                <div class="music-controls">
-                    <button class="music-btn" id="pause-btn">⏸️</button>
-                    <button class="music-btn" id="play-btn">▶️</button>
-                    <button class="music-btn" id="stop-btn">⏹️</button>
-                </div>
-                <div class="progress-container" id="progress-container">
-                    <div class="progress" id="progress"></div>
-                </div>
-            </div>
         </div>
 
-        <audio id="bg-music" loop>
-            <source
-                src="https://github.com/danishmoon/danishmoon.github.io/raw/refs/heads/main/kinna-sona.mp3"
-                type="audio/mpeg">
-        </audio>
-
         <script>
+
+        const audio = new Audio('https://github.com/danishmoon/danishmoon.github.io/raw/refs/heads/main/music.mp3'); // Replace with your MP3 URL
+        let isAudioPlayed = false;
+
+        const coupleTap = document.querySelector('.tap-to-play-on-couple');
+
+        if (coupleTap) {
+            coupleTap.addEventListener('click', function playAudio() {
+            if (!isAudioPlayed) {
+                audio.play().catch(error => {
+                    console.error('Error playing audio:', error);
+                });
+                isAudioPlayed = true;
+                // Optional: Remove event listener after first play
+                coupleTap.removeEventListener('click', playAudio);
+            }
+        });
+        }
+
         // Create floating elements
         function createFloatingElements() {
             const emojis = ['💗', '🌷', '💖', '✨', '🥰', '🎀', '💕', '🫶🏻', '💘'];
@@ -478,14 +422,11 @@
         // Surprise button functionality
         document.getElementById('surprise-btn').addEventListener('click', function() {
             const hiddenMessage = document.getElementById('hidden-message');
-            const musicPlayer = document.getElementById('music-player');
             
             if (hiddenMessage.style.display === 'block') {
                 hiddenMessage.style.display = 'none';
-                musicPlayer.style.display = 'none';
             } else {
                 hiddenMessage.style.display = 'block';
-                musicPlayer.style.display = 'block';
                 
                 // Create floating hearts animation
                 createHeartBurst();
@@ -543,42 +484,6 @@
             }
         }
         
-        // Music player functionality
-        const audio = document.getElementById('bg-music');
-        const playBtn = document.getElementById('play-btn');
-        const pauseBtn = document.getElementById('pause-btn');
-        const stopBtn = document.getElementById('stop-btn');
-        const progress = document.getElementById('progress');
-        const progressContainer = document.getElementById('progress-container');
-        
-        playBtn.addEventListener('click', () => {
-            audio.play();
-        });
-        
-        pauseBtn.addEventListener('click', () => {
-            audio.pause();
-        });
-        
-        stopBtn.addEventListener('click', () => {
-            audio.pause();
-            audio.currentTime = 0;
-        });
-        
-        // Update progress bar
-        audio.addEventListener('timeupdate', () => {
-            const percent = (audio.currentTime / audio.duration) * 100;
-            progress.style.width = `${percent}%`;
-        });
-        
-        // Click on progress bar to seek
-        progressContainer.addEventListener('click', (e) => {
-            const width = progressContainer.clientWidth;
-            const clickX = e.offsetX;
-            const duration = audio.duration;
-            
-            audio.currentTime = (clickX / width) * duration;
-        });
-        
         // Initialize
         window.addEventListener('load', () => {
             createFloatingElements();
@@ -601,6 +506,7 @@
                 surpriseBtn.classList.toggle('animate__pulse');
             }, 2000);
         });
+
     </script>
     </body>
 </html>
