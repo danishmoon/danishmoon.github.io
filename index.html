@@ -357,6 +357,30 @@
                 height: 150px;
             }
         }
+
+        .floating-emoji {
+            position: absolute;
+            font-size: 1.5rem; /* Adjust emoji size */
+            z-index: -1; /* Place behind content */
+            pointer-events: none; /* Prevent interaction */
+            animation: float 5s linear forwards;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) scale(1) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-20vh) translateX(5vw) scale(1.2) rotate(10deg); /* Slight movement and rotation */
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-40vh) translateX(10vw) scale(0.8) rotate(20deg); /* Move up and fade out */
+                opacity: 0;
+            }
+        }
+
     </style>
     </head>
     <body>
@@ -425,33 +449,26 @@
         <script>
         // Create floating elements
         function createFloatingElements() {
-            const container = document.getElementById('floating-elements');
-            const elements = ['💘', '💗', '💕', '🫶🏻', '💖', '🥰', '🌷', '🌍', '🫂', '🥹'];
-            const count = 30;
-            
-            for (let i = 0; i < count; i++) {
-                const element = document.createElement('div');
-                element.classList.add('floating-element');
-                element.textContent = elements[Math.floor(Math.random() * elements.length)];
-                
-                // Random properties
-                const size = Math.random() * 30 + 15;
-                const posX = Math.random() * window.innerWidth;
-                const posY = Math.random() * window.innerHeight;
-                const duration = Math.random() * 15 + 10;
-                const delay = Math.random() * 5;
-                const opacity = Math.random() * 0.5 + 0.3;
-                
-                element.style.left = `${posX}px`;
-                element.style.top = `${posY}px`;
-                element.style.fontSize = `${size}px`;
-                element.style.animationDuration = `${duration}s`;
-                element.style.animationDelay = `${delay}s`;
-                element.style.opacity = opacity;
-                
-                container.appendChild(element);
+            const emojis = ['💗', '🌷', '💖', '✨', '🥰', '🎀', '💕', '🫶🏻', '💘'];
+            const container = document.body;
+
+            function createEmoji() {
+                const emoji = document.createElement('div');
+                emoji.classList.add('floating-emoji');
+                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                emoji.style.left = `${Math.random() * 100}vw`;
+                emoji.style.top = `${Math.random() * 100}vh`;
+                container.appendChild(emoji);
+
+                setTimeout(() => {
+                    emoji.remove();
+                }, 5000);
             }
+
+            setInterval(createEmoji, 500);
         }
+
+        window.addEventListener('DOMContentLoaded', createFloatingElements);
         
         // Surprise button functionality
         document.getElementById('surprise-btn').addEventListener('click', function() {
